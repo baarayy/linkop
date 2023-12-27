@@ -1,0 +1,44 @@
+version: "3.5"
+
+services:
+  server:
+    container_name: server
+    restart: always
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    command: "npm run startdev"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - linkop
+  mongo:
+    image: mongo
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - linkop
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    env_file:
+      - ./.env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${ME_CONFIG_MONGODB_ADMINUSERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${ME_CONFIG_MONGODB_ADMINPASSWORD}
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL}
+    networks:
+      - linkop
+    depends_on:
+      - mongo
+volumes:
+  mongodb_data:
+networks:
+  linkop:
