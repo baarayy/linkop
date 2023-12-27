@@ -13,4 +13,3 @@ yarn-error.log
 # Ignore .env file (if used for environment variables)
 .env
 docker-compose.yml
-dockerfile
