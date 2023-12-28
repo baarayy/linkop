@@ -23,4 +23,8 @@ router.post("/delete/:shortUrl", async (req, res) => {
   await linkModel.deleteOne({ short: req.params.shortUrl });
   res.redirect("/shortens");
 });
+router.post("/delete", async (req, res) => {
+  await linkModel.deleteMany({});
+  res.redirect("/shortens");
+});
 export default router;
