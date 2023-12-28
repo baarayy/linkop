@@ -9,6 +9,9 @@ Linkop is a URL shortener web application designed to simplify the process of sh
 - **Tracking Clicks:** Know the number of times you visited each link.
 - **Links Management:** Easily delete unwanted links either all at once or one at a time.
 
+## Screenshots
+![Screenshot](screens/sc2.png)
+
 ## Technologies 
 - **Nodejs:** as the main runtime environment.
 - **Typescript:** as the programming language.
