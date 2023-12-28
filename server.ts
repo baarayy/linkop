@@ -17,8 +17,12 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "./src/views"));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "./src/views")));
 app.use(express.urlencoded({ extended: false }));
 app.use("/shortens", shortenRouter);
+app.get("/", (req, res) => {
+  res.redirect("/shortens");
+});
 const port = process.env.PORT || 8000;
 app.listen(port, async () => {
   console.log(`Server started on port ${port}`);

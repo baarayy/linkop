@@ -16,4 +16,11 @@ router.get("/:shortUrl", async (req, res) => {
   shortUrl.save();
   res.redirect(shortUrl.full);
 });
+router.post("delete/:shortUrl", async (req, res) => {
+  const shortUrl = await linkModel.findOne({ short: req.params.shortUrl });
+  console.log(shortUrl);
+  if (!shortUrl) return res.sendStatus(404);
+  await linkModel.deleteOne({ short: req.params.shortUrl });
+  res.redirect("/shortens");
+});
 export default router;
