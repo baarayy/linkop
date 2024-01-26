@@ -4,7 +4,7 @@ import express from "express";
 import path from "path";
 import shortenRouter from "./src/routes/shortenRoute";
 dotenv.config();
-const URL = process.env.MONGODB_URL as string;
+const URL = process.env.MONGODB_URL as string; 
 mongoose
   .connect(URL)
   .then(() => {
